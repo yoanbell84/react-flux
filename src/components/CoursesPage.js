@@ -1,36 +1,20 @@
 //import React, { Component } from 'react';
 import React, { useState, useEffect } from 'react';
-import { getCourses } from '../api/courseApi';
+import * as courseApi from '../api/courseApi';
+import * as authorApi from '../api/authorApi';
 import CourseList from './CourseList';
-
-/*class CoursesPage extends Component {
-	state = {
-		courses: [],
-	};
-
-	componentDidMount = async () => {
-		const courses = await getCourses();
-		this.setState({ courses });
-	};
-
-	render() {
-		const { courses } = this.state;
-		return (
-			<div className='jumbotron'>
-				<h1>Courses</h1>
-				<CourseList courses={courses} />
-			</div>
-		);
-	}
-}*/
+import { Link } from 'react-router-dom';
 
 const CoursesPage = () => {
 	const [courses, setCourses] = useState([]);
+	const [authors, setAuthors] = useState([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const result = await getCourses();
-			setCourses(result);
+			const _courses = await courseApi.getCourses();
+			const _authors = await authorApi.getAuthors();
+			setAuthors(_authors);
+			setCourses(_courses);
 		};
 		fetchData();
 	}, []);
@@ -38,7 +22,10 @@ const CoursesPage = () => {
 	return (
 		<div className='jumbotron'>
 			<h1>Courses</h1>
-			<CourseList courses={courses} />
+			<Link className='btn btn-primary' to='/course'>
+				Add Course
+			</Link>
+			<CourseList courses={courses} authors={authors} />
 		</div>
 	);
 };
