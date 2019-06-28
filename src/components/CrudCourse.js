@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import CourseForm from './CourseForm';
-import * as courseApi from '../api/courseApi';
-import * as authorApi from '../api/authorApi';
+import * as courseActions from '../actions/courseActions';
+import * as authorActions from '../actions/authorActions';
+import courseStore from '../stores/courseStore';
+import authorStore from '../stores/authorStore';
 import { toast } from 'react-toastify';
 
 const initialValues = {
@@ -18,8 +20,30 @@ const ucFirst = string => {
 
 const CrudCourse = props => {
 	const [course, setCourse] = useState(initialValues);
+	const [courses, setCourses] = useState(courseStore.getCourses());
 	const [errors, setErrors] = useState({});
 	const [authors, setAuthors] = useState([]);
+
+	useEffect(() => {
+		const slug = props.match.params.slug;
+		courseStore.addChangeListener(onChangeCourses);
+		authorStore.addChangeListener(onChangeAuthors);
+
+		if (authors.length === 0) {
+			authorActions.loadAuthors();
+		}
+
+		if (courses.length === 0) {
+			courseActions.loadCourses();
+		} else if (slug) {
+			setCourse(courseStore.getCourseBySlug(slug));
+		}
+
+		return () => {
+			courseStore.removeChangeListener(onChangeCourses);
+			authorStore.removeChangeListener(onChangeAuthors);
+		};
+	}, [authors.length, courses.length, props.match.params.slug]);
 
 	const handleChange = ({ target }) => {
 		setCourse({ ...course, [target.name]: target.value });
@@ -28,33 +52,23 @@ const CrudCourse = props => {
 	const handleSubmit = async event => {
 		event.preventDefault();
 		if (!formIsValid()) return;
-		let result = await courseApi.saveCourse(course);
-		if (result) {
-			props.history.push('/courses');
-			toast.success('Course Saved');
-		}
+		await courseActions.saveCourse(course);
+		props.history.push('/courses');
+		toast.success(`Course ${course.id ? 'Updated' : 'Saved'}`);
 	};
-
-	useEffect(() => {
-		const slug = props.match.params.slug;
-		if (slug) {
-			const fetchData = async () => {
-				const _course = await courseApi.getCourseBySlug(slug);
-				setCourse(_course);
-			};
-			fetchData();
-		}
-		const fetchAuthors = async () => {
-			const _authors = await authorApi.getAuthors();
-			setAuthors(_authors);
-		};
-		fetchAuthors();
-	}, [props.match.params.slug]);
 
 	const handleBlur = ({ target }) => {
 		const _errors = {};
 		if (!target.value) _errors[target.name] = ucFirst(`${target.name} is required`);
 		setErrors(_errors);
+	};
+
+	const onChangeCourses = () => {
+		setCourses(courseStore.getCourses());
+	};
+
+	const onChangeAuthors = () => {
+		setAuthors(authorStore.getAuthors());
 	};
 
 	const formIsValid = () => {
