@@ -5,7 +5,7 @@ import actionTypes from './actionTypes';
 export const saveAuthor = async author => {
 	const savedAuthor = await authorApi.saveAuthor(author);
 	dispatcher.dispatch({
-		actionType: actionTypes.CREATE_AUTHOR,
+		actionType: author.id ? actionTypes.UPDATE_AUTHOR : actionTypes.CREATE_AUTHOR,
 		author: savedAuthor,
 	});
 };

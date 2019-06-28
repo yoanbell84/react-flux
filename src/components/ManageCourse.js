@@ -18,7 +18,7 @@ const ucFirst = string => {
 	return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 };
 
-const CrudCourse = props => {
+const ManageCourse = props => {
 	const [course, setCourse] = useState(initialValues);
 	const [courses, setCourses] = useState(courseStore.getCourses());
 	const [errors, setErrors] = useState({});
@@ -95,4 +95,4 @@ const CrudCourse = props => {
 	);
 };
 
-export default CrudCourse;
+export default ManageCourse;

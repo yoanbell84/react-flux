@@ -2,15 +2,22 @@
   "courses": [
     {
       "id": 1,
-      "title": "Securing React Apps with Auth",
+      "title": "Securing React Apps with Auth0",
       "slug": "react-auth0-authentication-security",
-      "authorId": 3,
+      "authorId": 1,
       "category": "JavaScript"
     },
     {
       "id": 2,
-      "title": "React: The Big Image",
+      "title": "React: The Big Picture",
       "slug": "react-big-picture",
+      "authorId": 1,
+      "category": "JavaScript"
+    },
+    {
+      "id": 3,
+      "title": "Creating Reusable React Components",
+      "slug": "react-creating-reusable-components",
       "authorId": 1,
       "category": "JavaScript"
     },
@@ -22,11 +29,32 @@
       "category": "JavaScript"
     },
     {
+      "id": 5,
+      "title": "Building Applications with React and Redux",
+      "slug": "react-redux-react-router-es6",
+      "authorId": 1,
+      "category": "JavaScript"
+    },
+    {
+      "id": 6,
+      "title": "Building Applications in React and Flux",
+      "slug": "react-flux-building-applications",
+      "authorId": 1,
+      "category": "JavaScript"
+    },
+    {
       "id": 7,
       "title": "Clean Code: Writing Code for Humans",
       "slug": "writing-clean-code-humans",
       "authorId": 1,
       "category": "Software Practices"
+    },
+    {
+      "id": 8,
+      "title": "Architecting Applications for the Real World",
+      "slug": "architecting-applications-dotnet",
+      "authorId": 1,
+      "category": "Software Architecture"
     },
     {
       "id": 9,
@@ -41,22 +69,6 @@
       "slug": "web-components-shadow-dom",
       "authorId": 1,
       "category": "HTML5"
-    },
-    {
-      "id": 11,
-      "slug": "react-project-flux",
-      "title": "React Project Flux",
-      "authorId": 1,
-      "category": "flux",
-      "createdAt": 1561753964376
-    },
-    {
-      "id": 13,
-      "slug": "web-component-fundamentals",
-      "title": "Web Component Fundamentals",
-      "authorId": 3,
-      "category": "2",
-      "createdAt": 1561754255578
     }
   ],
   "authors": [
@@ -71,6 +83,11 @@
     {
       "id": 3,
       "name": "Dan Wahlin"
+    },
+    {
+      "id": 4,
+      "name": "yoan",
+      "createdAt": 1561763314282
     }
   ]
 }

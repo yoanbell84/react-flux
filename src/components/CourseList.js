@@ -29,7 +29,7 @@ const CourseList = props => {
 							<td>{(author && author) || 'Unknown'}</td>
 							<td>{course.category}</td>
 							<td>
-								<button className='btn btn-danger' onClick={() => onClick(course)}>
+								<button className='btn btn-outline-danger' onClick={() => onClick(course)}>
 									Delete
 								</button>
 							</td>
@@ -43,6 +43,7 @@ const CourseList = props => {
 
 CourseList.propTypes = {
 	courses: PropTypes.array.isRequired,
+	onClick: PropTypes.func.isRequired,
 };
 
 export default CourseList;
