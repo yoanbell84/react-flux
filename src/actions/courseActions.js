@@ -5,7 +5,7 @@ import actionTypes from './actionTypes';
 export const saveCourse = async course => {
 	const savedCourse = await courseApi.saveCourse(course);
 	dispatcher.dispatch({
-		actionType: actionTypes.CREATE_COURSE,
+		actionType: course.id ? actionTypes.UPDATE_COURSE : actionTypes.CREATE_COURSE,
 		course: savedCourse,
 	});
 };

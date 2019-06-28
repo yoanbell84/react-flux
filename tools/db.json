@@ -2,9 +2,9 @@
   "courses": [
     {
       "id": 1,
-      "title": "Securing React Apps with Auth01",
+      "title": "Securing React Apps with Auth",
       "slug": "react-auth0-authentication-security",
-      "authorId": 1,
+      "authorId": 3,
       "category": "JavaScript"
     },
     {
@@ -46,7 +46,7 @@
       "id": 11,
       "slug": "react-project-flux",
       "title": "React Project Flux",
-      "authorId": 3,
+      "authorId": 1,
       "category": "flux",
       "createdAt": 1561753964376
     },

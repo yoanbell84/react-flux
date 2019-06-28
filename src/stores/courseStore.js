@@ -29,18 +29,20 @@ const store = new CourseStore();
 dispatcher.register(action => {
 	switch (action.actionType) {
 		case actionTypes.CREATE_COURSE:
+			_courses = [..._courses, { ...action.course }];
+			store.emitChange();
+			break;
+		case actionTypes.UPDATE_COURSE:
 			const course = _courses.find(course => course.id === action.course.id);
-			if (!course) {
-				_courses = [..._courses, { ...action.course }];
-			} else {
+			if (course) {
 				const index = _courses.findIndex(course => course.id === action.course.id);
 				_courses = [
 					..._courses.slice(0, index),
 					{ ...action.course },
 					..._courses.slice(index + 1),
 				];
+				store.emitChange();
 			}
-			store.emitChange();
 			break;
 		case actionTypes.LOAD_COURSES:
 			_courses = action.courses;
