@@ -4,14 +4,14 @@
       "id": 1,
       "title": "Securing React Apps with Auth0",
       "slug": "react-auth0-authentication-security",
-      "authorId": 3,
+      "authorId": 1,
       "category": "JavaScript"
     },
     {
       "id": 2,
       "title": "React: The Big Picture",
       "slug": "react-big-picture",
-      "authorId": 3,
+      "authorId": 1,
       "category": "JavaScript"
     },
     {
@@ -67,32 +67,8 @@
       "id": 10,
       "title": "Web Component Fundamentals",
       "slug": "web-components-shadow-dom",
-      "authorId": 2,
+      "authorId": 1,
       "category": "HTML5"
-    },
-    {
-      "id": 11,
-      "slug": "react-project",
-      "title": "React Project",
-      "authorId": 1,
-      "category": "react",
-      "createdAt": 1561682176161
-    },
-    {
-      "id": 12,
-      "slug": "aaaa",
-      "title": "aaaa",
-      "authorId": 1,
-      "category": "2222",
-      "createdAt": 1561682214144
-    },
-    {
-      "id": 13,
-      "slug": "jhg",
-      "title": "jhg",
-      "authorId": 1,
-      "category": "oiuoiu",
-      "createdAt": 1561684520413
     }
   ],
   "authors": [
@@ -107,6 +83,11 @@
     {
       "id": 3,
       "name": "Dan Wahlin"
+    },
+    {
+      "id": 4,
+      "name": "yoan",
+      "createdAt": 1561763314282
     }
   ]
 }
